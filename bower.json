@@ -1,0 +1,27 @@
+{
+  "name": "Openbook",
+  "version": "0.0.1",
+  "authors": [
+    "Borden",
+    "Otto <Otto.Borden@teamaol.com>"
+  ],
+  "description": "Openbook prototype",
+  "main": "server.js",
+  "license": "MIT",
+  "homepage": "https://github.com/ottoborden/Openbook",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.0",
+    "bootstrap": "~3.3.4",
+    "d3": "~3.5.5",
+    "lodash": "~3.9.0",
+    "jquery": "~2.1.4",
+    "moment": "2.10.3"
+  }
+}

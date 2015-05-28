@@ -1,0 +1,7 @@
+{
+  "localDev": {
+    "dbConfig": {
+      "host": "localhost:7474"
+    }
+  }
+}
