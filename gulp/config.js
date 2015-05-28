@@ -33,5 +33,8 @@ module.exports = {
     },
     delete: {
         src: [dev]
+    },
+    watch: {
+        scripts: src + '**/*.js'
     }
 };

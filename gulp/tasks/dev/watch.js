@@ -1,5 +1,6 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    config = require('../../config').watch;
 
 gulp.task('watch', ['browsersync'], function () {
-    console.log('task watch');
+    gulp.watch(config.scripts, ['build']);
 });
