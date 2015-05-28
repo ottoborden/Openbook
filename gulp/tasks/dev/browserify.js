@@ -15,13 +15,13 @@ gulp.task('browserify', function (callback) {
 
     var browserifyThis = function (bundleConfig) {
 
-        var bundler = browserify(_.assign(config, {
+        var bundler = watchify(browserify(_.assign(config, {
             cache: {},
             packageCache: {},
             fullPaths: false,
             transform: reactify,
             entries: bundleConfig.entries
-        }));
+        })));
 
         var bundle = function () {
             bundleLogger.start(bundleConfig.outputName);
@@ -33,6 +33,8 @@ gulp.task('browserify', function (callback) {
                 .pipe(gulp.dest(bundleConfig.dest))
                 .on('end', reportFinished);
         };
+
+        bundler.on('update', bundle);
 
         function handleErrors() {
             var args = Array.prototype.slice.call(arguments);
@@ -61,12 +63,4 @@ gulp.task('browserify', function (callback) {
     };
 
     config.bundleConfigs.forEach(browserifyThis);
-
-    /*var bundler = browserify(_.assign(config.browserify, {
-        transform: reactify
-    }));
-    return bundler.on('error', handleErrors)
-        .bundle()
-        .pipe(source(config.bundleConfigs[0].entries))
-        .pipe(gulp.dest(config.bundleConfigs[0].dest));*/
 });
