@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react'),
+    SignInForm = require('./SignInForm');
 
 var Navbar = React.createClass({
     render: function () {
@@ -56,25 +57,8 @@ var NavbarSignIn = React.createClass({
                 className: 'dropdown-menu',
                 role: 'menu'
             }, [
-                React.createElement('form', { className: 'form' }, [
-                    React.createElement('input', {
-                        className: 'form-control',
-                        placeholder: 'Username',
-                        type: 'text'
-                    }),
-                    React.createElement('input', {
-                        className: 'form-control',
-                        placeholder: 'Password',
-                        type: 'password'
-                    }),
-                    React.createElement('button', {
-                        className: 'btn',
-                        "data-toggle": 'button',
-                        type: 'button'
-                    }, 'Sign In')
-                ])
+                <SignInForm />
             ])
-
         )
     }
 });

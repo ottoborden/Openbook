@@ -2,6 +2,9 @@
   "localDev": {
     "dbConfig": {
       "host": "localhost:7474"
+    },
+    "server": {
+      "port": 3987
     }
   }
 }

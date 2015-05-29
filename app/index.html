@@ -36,7 +36,6 @@
 
 <script src="../build/dev/bundle.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io();
 
@@ -45,9 +44,5 @@
         socket.emit('clickGraphDisplay', _.pick(evt, arr));
     });
 </script>
-
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
-document.write("<script async src='http://HOST:3001/browser-sync/browser-sync-client.2.7.3.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
-var React = require('react');
-var $ = require('jquery');
-var Navbar = require('./assets/components/navbar');
+var React = require('react'),
+    $ = require('jquery'),
+    _ = require('lodash'),
+    io = require('socket.io-client'),
+    Navbar = require('./assets/components/navbar');
 
 var Ob = React.createClass({
     render: function() {

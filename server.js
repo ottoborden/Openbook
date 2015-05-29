@@ -5,8 +5,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-var config = require('config');
-var localDev = config.get('localDev');
+var config = require('config'),
+    localDev = config.get('localDev');
 
 app.use(express.static(__dirname + '/'));
 app.get('/', function (req, res) {
@@ -17,12 +17,16 @@ io.on('connection', function (socket) {
     console.log('a user connected');
 
     socket.on('clickGraphDisplay', processClick);
+
+    socket.on('clickSignInButton', function(data) {
+        console.log(data);
+    });
 });
 
 function processClick(data) {
     console.log(data);
 }
 
-http.listen(3000, function () {
-    console.log('listening on *:3000');
+http.listen(localDev.server.port, function () {
+    console.log('listening on *:' + localDev.server.port);
 });
