@@ -5,8 +5,13 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+// Get event handler modules
+var requireDir = require('require-dir');
+var server = requireDir('./server', { recurse: true });
+
+// Get configuration
 var config = require('config'),
-    localDev = config.get('localDev');
+    localDev = config.get(process.env.NODE_ENV);
 
 app.use(express.static(__dirname + '/'));
 app.get('/', function (req, res) {
@@ -16,11 +21,7 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
     console.log('a user connected');
 
-    socket.on('clickGraphDisplay', processClick);
-
-    socket.on('clickSignInButton', function(data) {
-        console.log(data);
-    });
+    socket.on('clickSignInButton', server.clickSignInButton);
 });
 
 function processClick(data) {
