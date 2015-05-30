@@ -8,15 +8,12 @@ var db = require('seraph')({
     pass: config.dbConfig.pass
 });
 
-/*
-    After authentication user id will be the user's custom namespace
- */
 var clickSignInButton = function (data) {
     db.save(data, 'User', function (err, node) {
         if(err) {
             throw err;
         } else {
-            var socket = io().of(node.id.toString());
+            console.log(node);
         }
     });
 };
