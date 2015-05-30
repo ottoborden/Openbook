@@ -1,7 +1,11 @@
 {
   "localDev": {
     "dbConfig": {
-      "host": "localhost:7474"
+      "protocol": "http://",
+      "host": "localhost:7474",
+      "endpoint": "/db/data",
+      "user": "neo4j",
+      "pass": "password"
     },
     "server": {
       "port": 3987
