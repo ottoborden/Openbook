@@ -8,6 +8,7 @@
       "pass": "password"
     },
     "server": {
+      "host": "http://localhost",
       "port": 3987
     }
   }

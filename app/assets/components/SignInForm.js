@@ -24,7 +24,7 @@ var SignInForm = React.createClass({
 
     processSignIn: function () {
         var socket = io();
-        socket.emit('clickSignInButton', {
+        socket.emit('requestAuthentication', {
             username: this.state.username,
             password: this.state.password
         });
