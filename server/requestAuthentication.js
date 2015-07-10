@@ -9,26 +9,25 @@ var db = require('seraph')({
     pass: config.dbConfig.pass
 });
 
-var requestAuthentication = function (data) {
+var requestAuthentication = function (data, socket) {
     db.save(data, 'User', function (err, node) {
         if(err) {
+            console.log('error');
             throw err;
         } else {
-            var socket = SocketIo(),
-                jwtSecret = 'foo bar big secret';
-
             /*
                 If the users credentials check out
              */
-            var token = jwt.sign(node, jwtSecret, { expiresInMinutes: 60000*5 });
+            var token = createJwt(node);
 
             socket.emit('successfullyAuthenticated', { token: token });
         }
     });
 };
 
-function createJwt () {
-
+function createJwt (node) {
+    jwtSecret = 'foo bar big secret';
+    return jwt.sign(node, jwtSecret, { expiresInMinutes: 60000*5 });
 }
 
 module.exports = requestAuthentication;

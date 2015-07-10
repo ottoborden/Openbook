@@ -20,9 +20,9 @@ app.get('/', function (req, res) {
 socketIo.on('connection', function (socket) {
     console.log('a user connected');
 
-    console.log(socket.id);
-
-    socket.on('requestAuthentication', serverEventHandler.requestAuthentication);
+    socket.on('requestAuthentication', function (data) {
+        serverEventHandler.requestAuthentication(data, socket);
+    });
 });
 
 http.listen(config.server.port, function () {

@@ -18,11 +18,11 @@ var Ob = React.createClass({
 
 var io = SocketIo();
 
-io.on('connect', function () {
-    console.log(io.id);
+io.on('connect', function (socket) {
+    console.log('connect');
 
     io.on('successfullyAuthenticated', function (data) {
+        console.log('authenticate');
         console.log(data);
     });
 });
-
